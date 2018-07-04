@@ -124,7 +124,6 @@ if __name__ == '__main__':
     if args.ip:
         name = args.ip
         host = socket.gethostbyname(name)
-        print (host)
         obscure_ip(host)
 
     else:
