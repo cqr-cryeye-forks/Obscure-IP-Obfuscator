@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 import argparse
 import re
+import socket
 
 NAME, AUTHOR, VERSION = \
-    'IP Obfuscator  ', 'Author:', '0.1f'
+    'IP Obfuscator  ', 'Author:', ''
+
+
+
 
 
 def obscure_ip(ip):
-    print ("\n" + NAME + " #v" + VERSION + "\n  " + AUTHOR + "\n")
     print('[~] Obfuscated IPs:\n')
     for match in re.finditer(r'((?P<a>\d+)\.)((?P<b>\d+)\.)((?P<c>\d+)\.)'
                              '(?P<d>\d+)', ip):
@@ -108,13 +111,21 @@ def obscure_ip(ip):
         print('[+] http://'+'0000:0000:0000:0000:0000:ffff:'+ip+'\n')
 
 
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=NAME+VERSION, epilog=AUTHOR)
     parser.add_argument('--ip',
                         dest='ip',
                         help='Targeted IP (e.g. \'127.0.0.1\')')
+
+
     args = parser.parse_args()
     if args.ip:
-        obscure_ip(args.ip)
+        name = args.ip
+        host = socket.gethostbyname(name)
+        print (host)
+        obscure_ip(host)
+
     else:
         parser.print_help()
