@@ -3,7 +3,7 @@ import argparse
 import re
 
 NAME, AUTHOR, VERSION = \
-    'IP Obfuscator  ', 'Author: Omer Ramić <@sp_omer>', '0.1f'
+    'IP Obfuscator  ', 'Author:', '0.1f'
 
 
 def obscure_ip(ip):
